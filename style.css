@@ -14,19 +14,20 @@ body {
   width: 100vw;
   overflow: hidden;
   background: #808080;
+  padding: 1rem;
 }
 
 #start-btn {
   position: absolute;
-  top: 80%;
-  left: 80%;
+  top: 90%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(135deg, #fcd34d, #fbbf24);
   color: #fff;
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -39,16 +40,13 @@ body {
   transform: translate(-50%, -50%) scale(1.05);
 }
 
-.flipbook {
-  width: 684px;
-  height: 492px;
-}
-
+.flipbook,
 .imgBoard {
   width: 684px;
   height: 492px;
 }
 
+/* 하드 커버 스타일 */
 .flipbook .hard {
   background-color: red !important;
   color: #fff;
@@ -63,6 +61,7 @@ body {
   font-size: 14px;
 }
 
+/* 내부 페이지 */
 .flipbook .page {
   background: white;
   display: flex;
@@ -82,4 +81,28 @@ body {
 .flipbook .page small {
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+/* 📱 모바일 대응 미디어 쿼리 */
+@media (max-width: 768px) {
+  .flipbook,
+  .imgBoard {
+    width: 90vw;
+    height: calc(90vw * 0.72); /* 684x492 비율 유지 */
+  }
+
+  #start-btn {
+    top: 95%;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .flipbook .page small,
+  .flipbook .hard small {
+    font-size: 12px;
+  }
+
+  .flipbook .page {
+    gap: 5px;
+  }
 }
