@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -7,26 +7,27 @@
   font-family: "Poppins", sans-serif;
 }
 
-html,
 body {
-  width: 100%;
-  height: 100%;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   background: #808080;
+  padding: 1rem;
 }
 
-/* 버튼: 항상 화면 하단 중앙에 고정 */
 #start-btn {
-  position: fixed;
-  bottom: 2rem;
+  position: absolute;
+  top: 90%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background: linear-gradient(135deg, #fcd34d, #fbbf24);
   color: #fff;
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -36,29 +37,21 @@ body {
 
 #start-btn:hover {
   background: linear-gradient(135deg, #facc15, #f59e0b);
-  transform: translateX(-50%) scale(1.05);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
-/* 플립북 전체 화면 대응 */
 .flipbook,
 .imgBoard {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 684px;
+  height: 492px;
 }
 
 /* 하드 커버 스타일 */
 .flipbook .hard {
-  background-color: #b91c1c !important;
+  background-color: red !important;
   color: #fff;
   font-weight: bold;
   border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  padding: 1rem;
-  text-align: center;
 }
 
 .flipbook .hard small {
@@ -76,37 +69,40 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.11);
-  padding: 1rem;
 }
 
 .page img {
   width: 100%;
-  height: auto;
   object-fit: cover;
-  flex-shrink: 0;
+  margin: auto;
 }
 
 .flipbook .page small {
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
-/* 미디어 쿼리로 모바일 대응 강화 */
+/* 📱 모바일 대응 미디어 쿼리 */
 @media (max-width: 768px) {
-  #start-btn {
-    padding: 0.8rem 1.5rem;
+  .flipbook,
+  .imgBoard {
+    width: 90vw;
+    height: calc(90vw * 0.72); /* 684x492 비율 유지 */
   }
 
-  .flipbook .page {
-    gap: 5px;
-    padding: 0.5rem;
+  #start-btn {
+    top: 95%;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 
   .flipbook .page small,
   .flipbook .hard small {
     font-size: 12px;
+  }
+
+  .flipbook .page {
+    gap: 5px;
   }
 }
